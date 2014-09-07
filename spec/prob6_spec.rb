@@ -1,3 +1,6 @@
+
+## SPEC FOR THE HOLES IN THE TEXT ##
+
 require 'spec_helper'
 require_relative '../Problem6/submission1/Main.rb'
 
