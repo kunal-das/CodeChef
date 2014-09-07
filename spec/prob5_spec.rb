@@ -1,3 +1,6 @@
+
+## SPEC FOR THE SAMLL FACTORIAL PROBLEM ##
+
 require 'spec_helper'
 require_relative '../Problem5/Main.rb'
 
