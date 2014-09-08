@@ -2,19 +2,26 @@
 ## SPEC FOR ENORMOUS INPUT ##
 
 require 'spec_helper'
-require_relative '../Problem3/Main.rb'
+require_relative '../lib/problem3.rb'
 
 describe "Main" do
-	let(:run) {Main.new}
+	
+	let(:run) { Main.new }
 
-	it "should store the test cases and the divisor" do
-		run.test_case_and_divisor("7 3")
-		expect(run.line_count).to eql("7")
-		expect(run.divisor).to eql("3")
+	it "should prompt the user equal to test cases" do
+		tests = 2
+		Main.any_instance.stub_chain(:gets, :chomp, :to_i).and_return(rand(1..100))
+		expect(run.array_of_input_numbers(tests).length).to eql(2)
 	end
 
-	describe "count should not change" do              // Need to work on this spec
-		Main.any_instance.stub(:gets).and_return(3)
-		expect(run.count_numbers(1, 2)).to eql(0)
+	it "should return an array of input numbers" do
+		Main.any_instance.stub_chain(:gets, :chomp, :to_i).and_return(rand(1..100))
+		expect(run.array_of_input_numbers(rand(1..100)).class).to eql(Array) 
 	end
+
+	it "should return a valid count" do
+		expect(run.count([], 3)).to eql(0)
+		expect(run.count([0,1,2,3,4,6],3)).to eql(2)
+	end
+
 end
