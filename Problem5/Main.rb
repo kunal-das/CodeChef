@@ -1,5 +1,5 @@
 
-## SMALL FACTORIALS ##
+### SMALL FACTORIALS ###
 
 class Main
 
