@@ -3,19 +3,17 @@
 
 class Main
 
-	attr_reader :arr_of_holes
-	
-	def initialize
-		@arr_of_holes = []
+	attr_reader :arr_of_words
+
+	def array_of_words(test_cases)
+		@arr_of_words = []
+		test_cases.times do |;input_word|
+			input_word = gets.chomp
+			@arr_of_words << input_word
+		end
+		@arr_of_words
 	end
 
-	def get_string(no_of_times)
-		1.upto(no_of_times) do
-			string_input = gets.chomp
-			count_holes(string_input)
-		end
-		puts arr_of_holes
-	end
 	def count_holes(word)
 		count = 0
 		word.each_char do |char|
@@ -25,10 +23,19 @@ class Main
 				count += 2
 			end
 		end
-		@arr_of_holes << count
+		count
+	end
+
+	def array_of_hole_counts(arr_of_words)
+		arr_of_hole_counts = []
+		arr_of_words.each do |word|
+			arr_of_hole_counts << count_holes(word)
+		end
+		arr_of_hole_counts
 	end
 end
 
 run = Main.new
 test_cases = gets.chomp.to_i
-run.get_string(test_cases)
+run.array_of_words(test_cases)
+puts run.array_of_hole_counts(run.arr_of_words)
