@@ -1,18 +1,29 @@
 
 ## ENORMOUS INPUT TEST##
 
-def count_numbers(lines, divisor)
-	count = 0
-	for i in 1..lines
-		input = gets.to_i
-		if (input%divisor==0)
-			count += 1
+class Main
+
+	attr_reader :arr_of_input_numbers
+
+	def array_of_input_numbers(test_cases)
+		@arr_of_input_numbers = []
+		test_cases.times do |;input_num|
+		  input_num = gets.chomp.to_i
+		  @arr_of_input_numbers << input_num
 		end
+		@arr_of_input_numbers
 	end
-	return count
+
+	def count(arr, divisor)
+		count = 0
+		arr.each do |num|
+			count+=1 if (num != 0 && num % divisor ==0) 
+		end
+		count
+	end
 end
-user_inputs = gets.chomp
-num_list = user_inputs.split{" "}
-line_count = num_list[0]
-divisor = num_list[1]
-puts count_numbers(line_count.to_i, divisor.to_i)
+
+run = Main.new
+prompt = gets.chomp
+run.array_of_input_numbers(prompt.split(" ")[0].to_i)
+run.count(run.arr_of_input_numbers, prompt.split(" ")[1].to_i)
